@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Effects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .effect-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .effect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .transition-example {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            margin: 20px 0;
+            transition: all 0.5s ease;
+        }
+        
+        .transition-example:hover {
+            background-color: #e74c3c;
+            border-radius: 50%;
+            transform: rotate(180deg) scale(1.2);
+        }
+        
+        .animation-example {
+            width: 100px;
+            height: 100px;
+            background-color: #9b59b6;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .gradient-example {
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        
+        .shadow-example {
+            height: 100px;
+            background: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 
+                0 1px 3px rgba(0,0,0,0.12),
+                0 1px 2px rgba(0,0,0,0.24),
+                0 10px 30px rgba(0,0,0,0.19);
+        }
+        
+        .text-effect {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: textShine 3s linear infinite;
+            text-align: center;
+        }
+        
+        @keyframes textShine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        .glow-example {
+            width: 100px;
+            height: 100px;
+            background-color: #f39c12;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #f39c12;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px #f39c12;
+            }
+            to {
+                box-shadow: 0 0 30px #f39c12, 0 0 40px #f39c12;
+            }
+        }
+        
+        .flip-card {
+            width: 200px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 20px 0;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .flip-card-front {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .flip-card-back {
+            background-color: #e74c3c;
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .button-effects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .btn-warning {
+            background-color: #f39c12;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Effects Demonstration</h1>
+        
+        <div class="effect-card">
+            <h2>Hover Effects</h2>
+            <p>Card with hover effect - try hovering over this card!</p>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Transition Effect</h2>
+            <p>Hover over the box below to see transition effects:</p>
+            <div class="transition-example"></div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Animation Effect</h2>
+            <p>Box with continuous animation:</p>
+            <div class="animation-example"></div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Gradient Effect</h2>
+            <p>Background gradient example:</p>
+            <div class="gradient-example"></div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Box Shadow Effect</h2>
+            <p>Multi-layered box shadow effect:</p>
+            <div class="shadow-example"></div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Text Gradient Effect</h2>
+            <p>Animated text gradient:</p>
+            <div class="text-effect">Animated Text</div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Glow Effect</h2>
+            <p>Element with glowing effect:</p>
+            <div class="glow-example"></div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>3D Flip Effect</h2>
+            <p>Hover over the card to see 3D flip effect:</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">Front</div>
+                    <div class="flip-card-back">Back</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="effect-card">
+            <h2>Button Effects</h2>
+            <p>Buttons with hover effects:</p>
+            <div class="button-effects">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-warning">Warning</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

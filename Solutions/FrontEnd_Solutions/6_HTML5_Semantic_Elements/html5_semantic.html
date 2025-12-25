@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Semantic Elements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        
+        header, nav, main, section, article, aside, footer {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        nav {
+            background-color: #333;
+            color: white;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        main {
+            display: flex;
+        }
+        
+        .main-content {
+            flex: 3;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        
+        section {
+            margin-bottom: 20px;
+        }
+        
+        article {
+            background-color: #e7f3ff;
+            margin-bottom: 20px;
+        }
+        
+        aside {
+            background-color: #f0f0f0;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        
+        figure {
+            margin: 20px;
+            text-align: center;
+        }
+        
+        figcaption {
+            font-style: italic;
+            color: #666;
+        }
+        
+        time {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML5 Semantic Elements Example</h1>
+        <p>Using semantic HTML5 elements for better structure and accessibility</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="main-content">
+            <section id="introduction">
+                <h2>Introduction to HTML5 Semantic Elements</h2>
+                <p>HTML5 semantic elements define the meaning of content on a webpage. These elements clearly describe their purpose to both the browser and the developer.</p>
+                
+                <article>
+                    <header>
+                        <h3>Article Header</h3>
+                        <p>Published by <span>John Doe</span> on <time datetime="2023-12-25">December 25, 2023</time></p>
+                    </header>
+                    <p>This is a self-contained composition in a document that is independently distributable or reusable. Articles should make sense on their own and can be read independently from the rest of the web page.</p>
+                    <footer>
+                        <p>Written by: John Doe | Tags: HTML5, Semantic, Web</p>
+                    </footer>
+                </article>
+                
+                <article>
+                    <header>
+                        <h3>Another Article</h3>
+                        <p>Published on <time datetime="2023-12-24">December 24, 2023</time></p>
+                    </header>
+                    <p>This is another example of an article element. It contains content that is independently meaningful.</p>
+                    <footer>
+                        <p>Written by: Jane Smith | Tags: Web Development, HTML</p>
+                    </footer>
+                </article>
+            </section>
+            
+            <section id="examples">
+                <h2>Examples of Semantic Elements</h2>
+                
+                <details>
+                    <summary>Click to see more details</summary>
+                    <p>This is the detailed content that can be shown or hidden.</p>
+                </details>
+                
+                <figure>
+                    <img src="https://via.placeholder.com/300x200" alt="Sample image">
+                    <figcaption>This is a sample image with a caption</figcaption>
+                </figure>
+                
+                <aside>
+                    <h3>Related Information</h3>
+                    <p>This is content that is related to the main content but can stand alone. It's often presented as a sidebar.</p>
+                </aside>
+            </section>
+        </div>
+        
+        <div class="sidebar">
+            <aside>
+                <h3>Sidebar Content</h3>
+                <p>This is a sidebar section with related content.</p>
+                
+                <nav>
+                    <h4>Additional Links</h4>
+                    <ul>
+                        <li><a href="#link1">Link 1</a></li>
+                        <li><a href="#link2">Link 2</a></li>
+                        <li><a href="#link3">Link 3</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 JALA Academy. All rights reserved.</p>
+        <p>Contact information: <a href="mailto:info@jalaacademy.com">info@jalaacademy.com</a></p>
+    </footer>
+    
+    <address>
+        Written by: JALA Academy<br>
+        Visit us at: www.jalaacademy.com<br>
+        Box 564, Disneyland<br>
+        USA
+    </address>
+</body>
+</html>

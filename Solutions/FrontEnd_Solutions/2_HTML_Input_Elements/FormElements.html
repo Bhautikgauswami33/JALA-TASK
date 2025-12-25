@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Input Elements</title>
+</head>
+<body>
+    <h1>HTML Input Elements and Attributes</h1>
+    
+    <form action="#" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="50" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+        <input type="button" value="Button">
+        
+        <br><br>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        
+        <br><br>
+        <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+        <label for="subscribe">Subscribe to newsletter</label>
+        
+        <br><br>
+        <label for="quantity">Quantity (min 1, max 10):</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+        
+        <br><br>
+        <label for="range">Select range:</label>
+        <input type="range" id="range" name="range" min="0" max="100">
+        
+        <br><br>
+        <label for="color">Choose color:</label>
+        <input type="color" id="color" name="color" value="#ff0000">
+        
+        <br><br>
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday">
+        
+        <br><br>
+        <label for="profile">Upload profile picture:</label>
+        <input type="file" id="profile" name="profile">
+        
+        <br><br>
+        <label for="time">Preferred time:</label>
+        <input type="time" id="time" name="time">
+        
+        <br><br>
+        <label for="month">Preferred month:</label>
+        <input type="month" id="month" name="month">
+        
+        <br><br>
+        <label for="week">Preferred week:</label>
+        <input type="week" id="week" name="week">
+        
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <br><br>
+        <a href="https://www.example.com" target="_blank">Open in new tab</a>
+        <a href="https://www.example.com" target="_self">Open in same tab</a>
+    </form>
+    
+    <iframe src="https://via.placeholder.com/300x200" width="300" height="200"></iframe>
+    
+    <!-- Note: Marquee is deprecated but included as per requirements -->
+    <marquee behavior="scroll" direction="left">This is a marquee element</marquee>
+</body>
+</html>

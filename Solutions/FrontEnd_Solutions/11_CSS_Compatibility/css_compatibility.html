@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Compatibility</title>
+    <style>
+        /* CSS Reset for cross-browser compatibility */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        /* Flexbox with fallback for older browsers */
+        .compatibility-container {
+            display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+            display: -moz-box;         /* OLD - Firefox 19- */
+            display: -ms-flexbox;      /* TWEENER - IE 10 */
+            display: -webkit-flex;     /* NEW - Chrome */
+            display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .box {
+            -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+            -moz-box-flex: 1;         /* OLD - Firefox 19- */
+            width: 200px;             /* Fallback for older browsers */
+            -webkit-flex: 1;          /* Safari 6.1+ */
+            -ms-flex: 1;              /* IE 10 */
+            flex: 1;                  /* Standard */
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Vendor prefixes for transitions */
+        .transition-box {
+            width: 100px;
+            height: 100px;
+            background: #3498db;
+            margin: 20px 0;
+            -webkit-transition: all 0.3s ease; /* Safari */
+            -moz-transition: all 0.3s ease;    /* Firefox */
+            -o-transition: all 0.3s ease;      /* Opera */
+            transition: all 0.3s ease;         /* Standard */
+        }
+        
+        .transition-box:hover {
+            background: #e74c3c;
+            -webkit-transform: scale(1.2); /* Safari */
+            -moz-transform: scale(1.2);    /* Firefox */
+            -ms-transform: scale(1.2);     /* IE 9 */
+            -o-transform: scale(1.2);      /* Opera */
+            transform: scale(1.2);         /* Standard */
+        }
+        
+        /* Gradient with fallbacks */
+        .gradient-box {
+            height: 100px;
+            background: #3498db; /* Fallback for older browsers */
+            background: -webkit-linear-gradient(left, #3498db, #e74c3c); /* Safari 5.1-6.0 */
+            background: -o-linear-gradient(right, #3498db, #e74c3c); /* Opera 11.1-12.0 */
+            background: -moz-linear-gradient(right, #3498db, #e74c3c); /* Firefox 3.6-15 */
+            background: linear-gradient(to right, #3498db, #e74c3c); /* Standard */
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Rounded corners with fallbacks */
+        .rounded-box {
+            width: 100px;
+            height: 100px;
+            background: #2ecc71;
+            margin: 20px 0;
+            border-radius: 10px; /* Standard */
+            -webkit-border-radius: 10px; /* Safari/Chrome */
+            -moz-border-radius: 10px; /* Firefox */
+        }
+        
+        /* Box shadow with fallbacks */
+        .shadow-box {
+            width: 100px;
+            height: 100px;
+            background: white;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Standard */
+            -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Safari/Chrome */
+            -moz-box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Firefox */
+        }
+        
+        /* Opacity with fallbacks */
+        .opacity-box {
+            width: 100px;
+            height: 100px;
+            background: #9b59b6;
+            margin: 20px 0;
+            filter: alpha(opacity=50); /* IE 8 and earlier */
+            opacity: 0.5; /* Standard */
+        }
+        
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .compatibility-container {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -moz-box-orient: vertical;
+                -moz-box-direction: normal;
+                -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                flex-direction: column;
+            }
+            
+            .box {
+                width: 100% !important;
+            }
+        }
+        
+        /* CSS Grid with fallbacks */
+        .grid-container {
+            display: -ms-grid; /* IE 10-11 */
+            display: grid; /* Standard */
+            -ms-grid-columns: 1fr 1fr 1fr; /* IE 10-11 */
+            grid-template-columns: repeat(3, 1fr); /* Standard */
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .grid-item {
+            padding: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Fallback for IE */
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            .grid-container {
+                display: flex;
+            }
+        }
+        
+        /* Print styles for compatibility */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .box, .grid-item {
+                border: 1px solid #000;
+                background: white;
+            }
+        }
+        
+        /* Animation with vendor prefixes */
+        .animation-box {
+            width: 50px;
+            height: 50px;
+            background: #f39c12;
+            margin: 20px 0;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            -moz-animation: spin 2s linear infinite;    /* Firefox */
+            -o-animation: spin 2s linear infinite;      /* Opera */
+            animation: spin 2s linear infinite;         /* Standard */
+        }
+        
+        @-webkit-keyframes spin { /* Safari */
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        
+        @-moz-keyframes spin { /* Firefox */
+            0% { -moz-transform: rotate(0deg); }
+            100% { -moz-transform: rotate(360deg); }
+        }
+        
+        @keyframes spin { /* Standard */
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Compatibility Examples</h1>
+        <p>Demonstrating CSS techniques for cross-browser compatibility</p>
+    </header>
+    
+    <div class="container">
+        <h2>Flexbox with Vendor Prefixes</h2>
+        <div class="compatibility-container">
+            <div class="box">
+                <h3>Box 1</h3>
+                <p>This box uses flexbox with vendor prefixes for compatibility with older browsers.</p>
+            </div>
+            <div class="box">
+                <h3>Box 2</h3>
+                <p>Modern browsers will use the standard flex properties, while older ones use prefixed versions.</p>
+            </div>
+            <div class="box">
+                <h3>Box 3</h3>
+                <p>All modern browsers support unprefixed flexbox, but prefixes ensure broader compatibility.</p>
+            </div>
+        </div>
+        
+        <h2>Transition Effect</h2>
+        <p>Hover over the box to see the transition effect with vendor prefixes:</p>
+        <div class="transition-box"></div>
+        
+        <h2>Gradient Background</h2>
+        <p>Gradient with fallback for older browsers:</p>
+        <div class="gradient-box"></div>
+        
+        <h2>Rounded Corners</h2>
+        <p>Box with rounded corners using vendor prefixes:</p>
+        <div class="rounded-box"></div>
+        
+        <h2>Box Shadow</h2>
+        <p>Box with shadow effect:</p>
+        <div class="shadow-box"></div>
+        
+        <h2>Opacity</h2>
+        <p>Box with opacity and IE8 fallback:</p>
+        <div class="opacity-box"></div>
+        
+        <h2>Animation</h2>
+        <p>Spinning animation with vendor prefixes:</p>
+        <div class="animation-box"></div>
+        
+        <h2>CSS Grid with Fallback</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h3>Grid Item 1</h3>
+                <p>Uses CSS Grid with flexbox fallback for older browsers.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Grid Item 2</h3>
+                <p>Modern browsers use grid, older ones fall back to flexbox.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Grid Item 3</h3>
+                <p>Progressive enhancement approach for compatibility.</p>
+            </div>
+        </div>
+        
+        <h2>Browser Compatibility Notes</h2>
+        <ul>
+            <li>Use vendor prefixes for older browser support (-webkit-, -moz-, -ms-, -o-)</li>
+            <li>Provide fallback values for newer CSS properties</li>
+            <li>Use feature detection with Modernizr when needed</li>
+            <li>Test on multiple browsers and versions</li>
+            <li>Use CSS reset or normalize.css for consistent base styles</li>
+            <li>Consider using autoprefixer tool to automate vendor prefixing</li>
+            <li>Progressive enhancement: start with basic functionality, add enhancements</li>
+        </ul>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 CSS Compatibility Examples. All rights reserved.</p>
+    </footer>
+</body>
+</html>

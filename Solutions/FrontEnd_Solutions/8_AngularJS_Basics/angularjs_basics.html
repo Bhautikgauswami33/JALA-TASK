@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Basics</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+        }
+        
+        input[type="text"], input[type="email"], input[type="number"] {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AngularJS Basics Examples</h1>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>1. Data Binding ({{}})</h2>
+            <p>Name: <input type="text" ng-model="name" placeholder="Enter your name"></p>
+            <p>Hello, <span class="highlight">{{name || 'Guest'}}</span>!</p>
+            
+            <p>Message: <input type="text" ng-model="message" placeholder="Enter a message"></p>
+            <p>Your message: <span class="highlight">{{message}}</span></p>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>2. Filters</h2>
+            <p>Original text: <input type="text" ng-model="filterText" value="Hello World"></p>
+            <p>Uppercase: <span class="highlight">{{filterText | uppercase}}</span></p>
+            <p>Lowercase: <span class="highlight">{{filterText | lowercase}}</span></p>
+            <p>Capitalized: <span class="highlight">{{filterText | capitalize}}</span></p>
+            
+            <h3>Number Filter</h3>
+            <p>Decimal number: <input type="number" ng-model="numberValue" value="1234.5678" step="0.001"></p>
+            <p>Formatted as currency: <span class="highlight">{{numberValue | currency}}</span></p>
+            <p>Formatted as number (2 decimals): <span class="highlight">{{numberValue | number:2}}</span></p>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>3. Array and JSON</h2>
+            <p>Add new item: <input type="text" ng-model="newItem" placeholder="Enter new item">
+            <button ng-click="addItem()">Add Item</button></p>
+            
+            <h3>Current Items:</h3>
+            <ul>
+                <li ng-repeat="item in items track by $index">
+                    {{item}}
+                    <button ng-click="removeItem($index)">Remove</button>
+                </li>
+            </ul>
+            
+            <h3>Items as JSON:</h3>
+            <pre>{{items | json}}</pre>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>4. Conditional Display (ng-if, ng-show, ng-hide)</h2>
+            <p>Show text: <input type="checkbox" ng-model="showText"> Toggle visibility</p>
+            
+            <div ng-if="showText" style="background-color: #d4edda; padding: 10px; border: 1px solid #c3e6cb; border-radius: 4px;">
+                <p>This div is conditionally displayed using ng-if. It's only in the DOM when the condition is true.</p>
+            </div>
+            
+            <div ng-show="showText" style="background-color: #cce5ff; padding: 10px; border: 1px solid #b8daff; border-radius: 4px; margin-top: 10px;">
+                <p>This div is conditionally shown using ng-show. It's always in the DOM but hidden when the condition is false.</p>
+            </div>
+            
+            <div ng-hide="showText" style="background-color: #f8d7da; padding: 10px; border: 1px solid #f5c6cb; border-radius: 4px; margin-top: 10px;">
+                <p>This div is conditionally hidden using ng-hide. It's hidden when the condition is true.</p>
+            </div>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>5. List and Iteration (ng-repeat)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="person in people">
+                        <td>{{person.name}}</td>
+                        <td>{{person.age}}</td>
+                        <td>{{person.city}}</td>
+                        <td><button ng-click="removePerson($index)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Add New Person:</h3>
+            <p>Name: <input type="text" ng-model="newPerson.name" placeholder="Name"></p>
+            <p>Age: <input type="number" ng-model="newPerson.age" placeholder="Age"></p>
+            <p>City: <input type="text" ng-model="newPerson.city" placeholder="City"></p>
+            <button ng-click="addPerson()">Add Person</button>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>6. Event Handling (ng-click, etc.)</h2>
+            <p>Counter: {{counter}}</p>
+            <button ng-click="incrementCounter()">Increment</button>
+            <button ng-click="decrementCounter()">Decrement</button>
+            <button ng-click="resetCounter()">Reset</button>
+            
+            <h3>Click Events with Parameters</h3>
+            <button ng-click="setGreeting('Hello')">Say Hello</button>
+            <button ng-click="setGreeting('Hi')">Say Hi</button>
+            <button ng-click="setGreeting('Greetings')">Say Greetings</button>
+            
+            <p>Greeting: <span class="highlight">{{greeting}}</span></p>
+        </div>
+        
+        <div ng-controller="MainController" class="section">
+            <h2>7. Form Validation</h2>
+            <form name="userForm" novalidate>
+                <div>
+                    <label>Name (required):</label>
+                    <input type="text" name="userName" ng-model="user.name" required>
+                    <span ng-show="userForm.userName.$error.required" style="color: red;">Name is required!</span>
+                </div>
+                
+                <div>
+                    <label>Email (required, valid email):</label>
+                    <input type="email" name="userEmail" ng-model="user.email" required>
+                    <span ng-show="userForm.userEmail.$error.email" style="color: red;">Invalid email!</span>
+                    <span ng-show="userForm.userEmail.$error.required" style="color: red;">Email is required!</span>
+                </div>
+                
+                <div>
+                    <label>Phone (10 digits):</label>
+                    <input type="text" name="userPhone" ng-model="user.phone" ng-pattern="/^[0-9]{10}$/">
+                    <span ng-show="userForm.userPhone.$error.pattern" style="color: red;">Phone must be 10 digits!</span>
+                </div>
+                
+                <div>
+                    <label>Age (between 18 and 100):</label>
+                    <input type="number" name="userAge" ng-model="user.age" min="18" max="100">
+                    <span ng-show="userForm.userAge.$error.min" style="color: red;">Age must be at least 18!</span>
+                    <span ng-show="userForm.userAge.$error.max" style="color: red;">Age must be at most 100!</span>
+                </div>
+                
+                <button ng-click="submitForm()" ng-disabled="userForm.$invalid">Submit Form</button>
+                <p ng-show="formSubmitted" style="color: green;">Form submitted successfully!</p>
+            </form>
+            
+            <h3>Form Status:</h3>
+            <p>Form valid: {{userForm.$valid}}</p>
+            <p>Form dirty: {{userForm.$dirty}}</p>
+            <p>Form pristine: {{userForm.$pristine}}</p>
+        </div>
+    </div>
+
+    <script>
+        // Define the AngularJS application module
+        var app = angular.module('myApp', []);
+        
+        // Define a custom filter to capitalize text
+        app.filter('capitalize', function() {
+            return function(input) {
+                if (input) {
+                    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+                }
+                return input;
+            };
+        });
+        
+        // Define the controller
+        app.controller('MainController', function($scope) {
+            // Initialize scope variables
+            $scope.name = 'AngularJS User';
+            $scope.message = 'Welcome to AngularJS!';
+            $scope.filterText = 'Hello World';
+            $scope.numberValue = 1234.5678;
+            $scope.showText = true;
+            $scope.counter = 0;
+            $scope.greeting = 'Hello';
+            $scope.formSubmitted = false;
+            
+            // Items array for ng-repeat example
+            $scope.items = ['Apple', 'Banana', 'Orange'];
+            $scope.newItem = '';
+            
+            // People array for ng-repeat table example
+            $scope.people = [
+                {name: 'John Doe', age: 30, city: 'New York'},
+                {name: 'Jane Smith', age: 25, city: 'Los Angeles'},
+                {name: 'Bob Johnson', age: 35, city: 'Chicago'}
+            ];
+            
+            $scope.newPerson = {name: '', age: '', city: ''};
+            
+            // User object for form validation example
+            $scope.user = {};
+            
+            // Function to add an item
+            $scope.addItem = function() {
+                if ($scope.newItem) {
+                    $scope.items.push($scope.newItem);
+                    $scope.newItem = '';
+                }
+            };
+            
+            // Function to remove an item
+            $scope.removeItem = function(index) {
+                $scope.items.splice(index, 1);
+            };
+            
+            // Function to add a person
+            $scope.addPerson = function() {
+                if ($scope.newPerson.name && $scope.newPerson.age && $scope.newPerson.city) {
+                    $scope.people.push({
+                        name: $scope.newPerson.name,
+                        age: $scope.newPerson.age,
+                        city: $scope.newPerson.city
+                    });
+                    
+                    // Reset the form
+                    $scope.newPerson = {name: '', age: '', city: ''};
+                }
+            };
+            
+            // Function to remove a person
+            $scope.removePerson = function(index) {
+                $scope.people.splice(index, 1);
+            };
+            
+            // Counter functions
+            $scope.incrementCounter = function() {
+                $scope.counter++;
+            };
+            
+            $scope.decrementCounter = function() {
+                $scope.counter--;
+            };
+            
+            $scope.resetCounter = function() {
+                $scope.counter = 0;
+            };
+            
+            // Set greeting function
+            $scope.setGreeting = function(greeting) {
+                $scope.greeting = greeting;
+            };
+            
+            // Form submission function
+            $scope.submitForm = function() {
+                $scope.formSubmitted = true;
+                alert('Form submitted successfully!\nUser Data: ' + JSON.stringify($scope.user, null, 2));
+                
+                // Reset the flag after 3 seconds
+                setTimeout(function() {
+                    $scope.$apply(function() {
+                        $scope.formSubmitted = false;
+                    });
+                }, 3000);
+            };
+        });
+    </script>
+</body>
+</html>

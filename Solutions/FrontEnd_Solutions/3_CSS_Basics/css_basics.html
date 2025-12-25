@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Basics</title>
+    <style>
+        /* CSS comments in CSS block */
+        body {
+            /* Set background color and image */
+            background-color: #f0f0f0;
+            background-image: url('https://via.placeholder.com/800x600');
+            background-attachment: fixed; /* Image should not scroll */
+            background-size: cover; /* Specify the size of background image */
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .border-example {
+            /* Different border styles on each side */
+            border-top: 5px solid red;
+            border-right: 5px dashed blue;
+            border-bottom: 5px dotted green;
+            border-left: 5px double orange;
+            padding: 10px;
+            margin: 20px;
+        }
+        
+        .size-example {
+            /* Set height and width in pixels and percentage */
+            width: 50%; /* 50% of parent container */
+            height: 200px; /* 200 pixels height */
+            background-color: lightblue;
+            margin: 20px 0;
+        }
+        
+        .text-example {
+            /* Different font styles, sizes, families, colors and text alignment */
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            color: darkblue;
+            text-align: center;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Basics Examples</h1>
+    
+    <div class="border-example">
+        <h2>Border Styles Example</h2>
+        <p>This div has different border styles on each side.</p>
+    </div>
+    
+    <div class="size-example">
+        <h2>Size Example</h2>
+        <p>This div has width set to 50% and height to 200px.</p>
+    </div>
+    
+    <div class="text-example">
+        <p>This text has specific font style, size, family, color, and alignment.</p>
+        <p class="bold-text">This text is bold.</p>
+    </div>
+</body>
+</html>

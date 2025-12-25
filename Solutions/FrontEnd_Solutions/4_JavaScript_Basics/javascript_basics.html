@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Basics</title>
+</head>
+<body>
+    <h1>JavaScript Basics Examples</h1>
+    
+    <div id="output">
+        <h2>Output Area</h2>
+        <p id="demo">This text will be changed by JavaScript</p>
+    </div>
+    
+    <div>
+        <h2>JavaScript Operations</h2>
+        <button onclick="changeText()">Click to Change Text</button>
+        <button onclick="displayDate()">Display Current Date</button>
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <button onclick="validateForm()">Validate Form</button>
+    </div>
+    
+    <div>
+        <h2>Form with JavaScript Validation</h2>
+        <form id="myForm" onsubmit="return validateFormSubmit(event)">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required><br><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    <div>
+        <h2>JavaScript Events Examples</h2>
+        <p id="eventDemo" onmouseover="mouseOver()" onmouseout="mouseOut()">Mouse over this text</p>
+        <input type="text" id="textInput" onfocus="focusFunction()" onblur="blurFunction()" placeholder="Click here to see focus event">
+    </div>
+    
+    <div>
+        <h2>JavaScript Array Operations</h2>
+        <button onclick="showArray()">Show Array Elements</button>
+        <button onclick="sortArray()">Sort Array</button>
+        <button onclick="reverseArray()">Reverse Array</button>
+        <p id="arrayOutput"></p>
+    </div>
+    
+    <div>
+        <h2>JavaScript Conditional and Loop Examples</h2>
+        <button onclick="checkNumber()">Check if Number is Even/Odd</button>
+        <button onclick="showLoop()">Show Numbers using Loop</button>
+        <p id="conditionOutput"></p>
+        <p id="loopOutput"></p>
+    </div>
+
+    <script>
+        // 1. Basic variable declaration and initialization
+        var globalVar = "I'm a global variable";
+        let localVar = "I'm a local variable";
+        const constantVar = "I'm a constant";
+
+        // 2. Function to change text
+        function changeText() {
+            document.getElementById("demo").innerHTML = "Text changed by JavaScript!";
+            document.getElementById("demo").style.color = "blue";
+        }
+
+        // 3. Function to display current date
+        function displayDate() {
+            document.getElementById("demo").innerHTML = "Current date and time: " + Date();
+        }
+
+        // 4. Function to calculate sum
+        function calculateSum() {
+            let num1 = parseInt(prompt("Enter first number:", "10"));
+            let num2 = parseInt(prompt("Enter second number:", "20"));
+            let sum = num1 + num2;
+            document.getElementById("demo").innerHTML = "Sum of " + num1 + " and " + num2 + " is: " + sum;
+        }
+
+        // 5. Function to validate form
+        function validateForm() {
+            let x = document.getElementById("fname").value;
+            if (x === "") {
+                alert("Name must be filled out");
+                return false;
+            } else {
+                alert("Form is valid!");
+                return true;
+            }
+        }
+
+        // 6. Form submission validation
+        function validateFormSubmit(event) {
+            let fname = document.getElementById("fname").value;
+            let email = document.getElementById("email").value;
+            
+            if (fname === "" || email === "") {
+                alert("Please fill in all fields");
+                event.preventDefault();
+                return false;
+            }
+            
+            alert("Form submitted successfully!");
+            return true;
+        }
+
+        // 7. Mouse events
+        function mouseOver() {
+            document.getElementById("eventDemo").style.backgroundColor = "lightblue";
+            document.getElementById("eventDemo").innerHTML = "Mouse is over me!";
+        }
+
+        function mouseOut() {
+            document.getElementById("eventDemo").style.backgroundColor = "white";
+            document.getElementById("eventDemo").innerHTML = "Mouse left me!";
+        }
+
+        // 8. Focus and blur events
+        function focusFunction() {
+            document.getElementById("textInput").style.backgroundColor = "yellow";
+        }
+
+        function blurFunction() {
+            document.getElementById("textInput").style.backgroundColor = "white";
+        }
+
+        // 9. Array operations
+        let fruits = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+        
+        function showArray() {
+            document.getElementById("arrayOutput").innerHTML = "Array elements: " + fruits.join(", ");
+        }
+        
+        function sortArray() {
+            fruits.sort();
+            document.getElementById("arrayOutput").innerHTML = "Sorted array: " + fruits.join(", ");
+        }
+        
+        function reverseArray() {
+            fruits.reverse();
+            document.getElementById("arrayOutput").innerHTML = "Reversed array: " + fruits.join(", ");
+        }
+
+        // 10. Conditional statements
+        function checkNumber() {
+            let number = parseInt(prompt("Enter a number:", "5"));
+            let result;
+            
+            if (number % 2 === 0) {
+                result = number + " is an even number";
+            } else {
+                result = number + " is an odd number";
+            }
+            
+            document.getElementById("conditionOutput").innerHTML = result;
+        }
+
+        // 11. Loop examples
+        function showLoop() {
+            let text = "Numbers: ";
+            for (let i = 1; i <= 10; i++) {
+                text += i + " ";
+            }
+            document.getElementById("loopOutput").innerHTML = text;
+        }
+
+        // 12. JavaScript objects
+        const person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 30,
+            fullName: function() {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+
+        // 13. Display object information
+        console.log("Person object:", person);
+        console.log("Full name:", person.fullName());
+
+        // 14. Local and global scope example
+        function scopeExample() {
+            let localVariable = "I'm local to this function";
+            console.log("Global variable: " + globalVar);
+            console.log("Local variable: " + localVariable);
+            console.log("Constant variable: " + constantVar);
+        }
+
+        // 15. Call scope example when page loads
+        window.onload = function() {
+            console.log("Page loaded, demonstrating JavaScript execution");
+            scopeExample();
+        };
+
+        // 16. Event listener example
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded and parsed');
+        });
+
+        // 17. Timeout and interval examples
+        setTimeout(function() {
+            console.log("This message appears after 3 seconds");
+        }, 3000);
+
+        // 18. JSON example
+        const jsonString = '{"name":"John", "age":30, "city":"New York"}';
+        const jsonObject = JSON.parse(jsonString);
+        console.log("Parsed JSON object:", jsonObject);
+
+        // 19. Function with parameters and return value
+        function multiply(a, b) {
+            return a * b;
+        }
+
+        // 20. Demonstrate function
+        console.log("Multiplication result:", multiply(5, 3));
+    </script>
+</body>
+</html>
